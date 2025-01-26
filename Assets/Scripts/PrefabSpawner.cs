@@ -6,25 +6,28 @@ public class PrefabSpawner : MonoBehaviour
     [SerializeField] private GameObject[] correctItems;
     [SerializeField] private GameObject[] wrongItems;
 
-    private int SpawnAmount;
-
+    private int _spawnAmount;
+    private bool _isPaused;
     private void OnEnable()
     {
         GetSpawnAmountValue();
     }
     private void GetSpawnAmountValue()
     {
-        SpawnAmount = Random.Range(40, 100);
+        _spawnAmount = Random.Range(40, 100);
         StartCoroutine(StartSpawnDelay());
     }
     private IEnumerator StartSpawnDelay()
     {
-        for (int i = 0; i < SpawnAmount; i++)
+        for (int i = 0; i < _spawnAmount; i++)
         {
+            while (_isPaused)
+            {
+                yield return null;
+            }
             int RollDice = Random.Range(0, 6);
             if (RollDice < 5)
             {
-                // Outcome is 0-4: Spawn a "correct" object
                 SpawnCorrectItem();
             }
             else
@@ -44,7 +47,15 @@ public class PrefabSpawner : MonoBehaviour
     {
         GameObject prefab = wrongItems[Random.Range(0, wrongItems.Length)];
 
-        // Spawn the item
         Instantiate(prefab, transform.position, Quaternion.identity);
+    }
+
+    public void PauseProduction()
+    {
+        _isPaused = true;
+    }
+    public void ResumeProduction()
+    {
+        _isPaused = false;
     }
 }
