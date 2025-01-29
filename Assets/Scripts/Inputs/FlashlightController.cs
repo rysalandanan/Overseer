@@ -8,6 +8,10 @@ public class FlashlightController : MonoBehaviour
     [SerializeField] private GameObject flashLight;
     private bool isOn = false;
 
+    private void Start()
+    {
+        TurnOffFlashlight();
+    }
     private void Update()
     {
         OnOffFlashLight();
@@ -19,13 +23,11 @@ public class FlashlightController : MonoBehaviour
         {
             if (isOn)
             {
-                flashLight.SetActive(false);
-                isOn = false;
+                TurnOffFlashlight();
             }
             else
             {
-                flashLight.SetActive(true);
-                isOn = true;
+                TurnOnFlashlight();
             }
         }
     }
@@ -37,5 +39,15 @@ public class FlashlightController : MonoBehaviour
         {
             flashLight.transform.Rotate(Vector3.forward, -verticalInput * elevationSpeed * Time.deltaTime);
         }
+    }
+    private void TurnOnFlashlight()
+    {
+        flashLight.SetActive(true);
+        isOn = true;
+    }
+    private void TurnOffFlashlight()
+    {
+        flashLight.SetActive(false);
+        isOn = false;
     }
 }

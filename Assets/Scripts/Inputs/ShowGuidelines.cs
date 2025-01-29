@@ -4,7 +4,10 @@ public class ShowGuidelines : MonoBehaviour
 {
     [SerializeField] private GameObject[] controlGuide;
 
-
+    private void Start()
+    {
+        HideGuide();
+    }
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.LeftControl))
