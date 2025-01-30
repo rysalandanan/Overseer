@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 620d23f4fd43322438010988689ab7c1
+guid: 062bc0303c4e3c54783a2715edff5901
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -9,7 +9,7 @@ TrueTypeFontImporter:
   characterPadding: 1
   includeFontData: 1
   fontNames:
-  - Y224
+  - PROGRESS PERSONAL USE
   fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0

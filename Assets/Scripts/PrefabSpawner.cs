@@ -17,7 +17,7 @@ public class PrefabSpawner : MonoBehaviour
     }
     private void GetSpawnAmountValue()
     {
-        _spawnAmount = Random.Range(40, 100);
+        _spawnAmount = Random.Range(10, 30);
         StartCoroutine(StartSpawnDelay());
     }
     private IEnumerator StartSpawnDelay()
@@ -30,7 +30,7 @@ public class PrefabSpawner : MonoBehaviour
                 yield return null;
             }
             int RollDice = Random.Range(0, 6);
-            if (RollDice < 5)
+            if (RollDice < 3)
             {
                 SpawnCorrectItem();
             }
